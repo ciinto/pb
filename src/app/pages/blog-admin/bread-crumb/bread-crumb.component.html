@@ -1,0 +1,11 @@
+<div class="bread-crumb">
+  <button mat-button (click)="sidebarOpen()">
+    <mat-icon>home</mat-icon>
+  </button>
+  <mat-icon>keyboard_arrow_right</mat-icon>
+
+  <div *ngFor="let route of listRoutes; let i = index" class="list-routes">
+    <a mat-button href="{{route.redirectTo}}"> {{ route.text }}</a>
+    <mat-icon *ngIf="i < listRoutes.length - 1">keyboard_arrow_right</mat-icon>
+  </div>
+</div>

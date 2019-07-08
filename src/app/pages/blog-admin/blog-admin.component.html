@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Admin Control Panel</span>
+    <span class="admincp-spacer"></span>
+    <mat-icon class="admincp-icon" aria-hidden="false" aria-label="admincp heart icon">favorite</mat-icon>
+    <mat-icon class="admincp-icon" aria-hidden="false" aria-label="admincp delete icon">delete</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container class="admincp-container">
+  <mat-sidenav #sidenav mode="side" opened class="admincp-sidenav" fixedInViewport fixedTopGap="0" fixedBottomGap="0">
+    <div class="user-profile">
+      <img class="avatar" src="" alt="" />
+
+      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+    </div>
+    <div class="admincp-menu">
+      <mat-list>
+        <mat-list-item> <a routerLink="/posts" routerLinkActive="active">Posts</a> </mat-list-item>
+        <mat-list-item> Salt </mat-list-item>
+        <mat-list-item> Paprika </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="admincp-wrapper">
+      <app-bread-crumb (openSideBar)="sidenav.toggle()"></app-bread-crumb>
+      <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-toolbar class="admincp-footer">Footer</mat-toolbar>
