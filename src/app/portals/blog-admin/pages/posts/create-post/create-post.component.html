@@ -1,0 +1,23 @@
+<div class="create-post">
+  <form [formGroup]="formGroup" (ngSubmit)="createPost(formGroup.value)">
+    <mat-form-field>
+      <input matInput formControlName="title" placeholder="Title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="tag" placeholder="Tag">
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput formControlName="content" placeholder="Content"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Author" formControlName="author">
+        <mat-option value="admin">Admin</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!formGroup.valid">Create</button>
+  </form>
+</div>

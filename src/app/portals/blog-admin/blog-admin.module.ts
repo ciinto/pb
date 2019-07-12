@@ -3,21 +3,24 @@ import { CommonModule } from '@angular/common';
 import { BlogAdminComponent } from './blog-admin.component';
 import { MaterialModuleModule } from 'src/app/shared/material-module/material-module.module';
 import { BreadCrumbComponent } from './bread-crumb/bread-crumb.component';
-import { PostsModule } from './posts/posts.module';
-import { PostsComponent } from './posts/posts.component';
+import { BlogAdminRoutingModule } from './blog-admin-routing.module';
+import { PostsModule } from './pages/posts/posts.module';
 
 
 @NgModule({
-  declarations: [BlogAdminComponent, BreadCrumbComponent],
+  declarations: [
+    BlogAdminComponent,
+    BreadCrumbComponent
+  ],
   imports: [
     CommonModule,
     MaterialModuleModule,
-    PostsModule
+    BlogAdminRoutingModule,
+    PostsModule,
   ],
   exports: [
     BlogAdminComponent,
     BreadCrumbComponent,
-    PostsComponent
   ]
 })
 export class BlogAdminModule { }

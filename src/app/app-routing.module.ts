@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { BlogAdminComponent } from './pages/blog-admin/blog-admin.component';
-import { BlogAdminModule } from './pages/blog-admin/blog-admin.module';
-
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
-  {path: 'admincp', component: BlogAdminComponent}
+  {
+    path: 'admincp',
+    loadChildren: './portals/blog-admin/blog-admin.module#BlogAdminModule'
+  }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes),
-
-    BlogAdminModule
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules
+    }),
   ],
   exports: [RouterModule]
 })

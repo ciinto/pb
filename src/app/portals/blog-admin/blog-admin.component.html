@@ -8,7 +8,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="admincp-container">
-  <mat-sidenav #sidenav mode="side" opened class="admincp-sidenav" fixedInViewport fixedTopGap="0" fixedBottomGap="0">
+  <mat-sidenav #sidenav mode="side" opened class="admincp-sidenav" fixedInViewport fixedTopGap="60" fixedBottomGap="0">
     <div class="user-profile">
       <img class="avatar" src="" alt="" />
 
@@ -20,7 +20,7 @@
     </div>
     <div class="admincp-menu">
       <mat-list>
-        <mat-list-item> <a routerLink="/posts" routerLinkActive="active">Posts</a> </mat-list-item>
+        <mat-list-item> <a routerLink="/admincp/posts" routerLinkActive="active">Posts</a> </mat-list-item>
         <mat-list-item> Salt </mat-list-item>
         <mat-list-item> Paprika </mat-list-item>
       </mat-list>
@@ -30,7 +30,7 @@
   <mat-sidenav-content>
     <div class="admincp-wrapper">
       <app-bread-crumb (openSideBar)="sidenav.toggle()"></app-bread-crumb>
-      <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
