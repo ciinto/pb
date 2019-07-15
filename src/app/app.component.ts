@@ -6,14 +6,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  title = 'personal-blog';
-  items: any
-
-  constructor(db: AngularFirestore) {
-    this.items = db.collection('blog').valueChanges();
+  constructor() {
   }
 
   ngOnInit(){
-    console.debug(this.items)
   }
 }

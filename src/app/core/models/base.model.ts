@@ -1,23 +1,25 @@
-import { BaseModelInterface } from '../interfaces/base-model.interface';
-import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
-import { from } from 'rxjs';
+import { ServiceInterface } from '../interfaces/service.interface';
 
-export class BaseModel implements BaseModelInterface {
+export class BaseModel {
+  protected service: ServiceInterface
+  protected rawData: any
+  private attrKey = 'attribute'
 
-  private collectionObj: AngularFireObject<any>;
-  public collection: string
-
-  constructor(db: AngularFireDatabase) {
-    this.collectionObj = db.object(this.collection);
+  setValue(obj: any) {
+    this.rawData = obj
+    return this
   }
 
-  list() { return this.collectionObj.valueChanges() }
+  create() {
+    const createObj = {}
 
-  get() { return this.collectionObj.snapshotChanges() }
+    Object.keys(this).forEach(n => {
+      if (n.includes(this.attrKey)) {
+        createObj[n.replace(this.attrKey, '').toLowerCase()] = this[n]
+      }
+    })
 
-  create(obj) { return from(this.collectionObj.set(obj)) }
+    return this.service.create(createObj)
+  }
 
-  update(obj) { return from(this.collectionObj.update(obj)) }
-
-  delete() { return from(this.collectionObj.remove()) }
 }

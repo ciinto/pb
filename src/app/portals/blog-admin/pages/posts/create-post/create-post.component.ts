@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PostInterface } from 'src/app/core/models/post.model';
+import { PostInterface, PostModel } from 'src/app/core/models/post.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PostService } from 'src/app/core/services/post.service';
 
 @Component({
   selector: 'app-create-post',
@@ -12,14 +13,16 @@ export class CreatePostComponent implements OnInit {
   formGroup: FormGroup
   post: PostInterface = {}
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private postService: PostService) { }
 
   ngOnInit() {
     this.createForm()
   }
 
   createPost(post: PostInterface) {
-    console.debug(post)
+    // const postModel = new PostModel(post)
+    // this.postService.create(post).subscribe(res => console.debug(res))
+    // console.debug(postModel)
   }
 
   createForm() {

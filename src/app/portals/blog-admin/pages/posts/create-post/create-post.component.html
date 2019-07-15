@@ -1,5 +1,5 @@
 <div class="create-post">
-  <form [formGroup]="formGroup" (ngSubmit)="createPost(formGroup.value)">
+  <form class="create-post-form" [formGroup]="formGroup" (ngSubmit)="createPost(formGroup.value)">
     <mat-form-field>
       <input matInput formControlName="title" placeholder="Title">
     </mat-form-field>
@@ -9,7 +9,8 @@
     </mat-form-field>
 
     <mat-form-field>
-      <textarea matInput formControlName="content" placeholder="Content"></textarea>
+      <textarea matInput formControlName="content" placeholder="Content" rows="20"></textarea>
+      <em>Markdown support</em>
     </mat-form-field>
 
     <mat-form-field>
@@ -20,4 +21,6 @@
 
     <button mat-raised-button color="primary" type="submit" [disabled]="!formGroup.valid">Create</button>
   </form>
+
+  <markdown class="preview-post" lineNumbers  [data]="formGroup.value.content"></markdown>
 </div>

@@ -1,0 +1,18 @@
+.create-post {
+  display: flex;
+  
+  .create-post-form {
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    width: 50%;
+    padding: 20px;
+  }
+
+  .preview-post {
+    width: 50%;
+    padding: 20px;
+    border-left: 1px solid #cccccc;
+  }
+}

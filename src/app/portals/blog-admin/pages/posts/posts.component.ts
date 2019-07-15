@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from 'src/app/core/services/post.service';
+import { PostInterface } from 'src/app/core/models/post.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-posts',
@@ -7,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-  constructor() { }
+  displayedColumns: string[] = ['title', 'tag', 'author'];
+  posts: Observable<PostInterface[]>
+
+  constructor(private postService: PostService) {
+    console.log(this.postService);
+    
+    this.posts = this.postService.list()
+   }
 
   ngOnInit() {
   }

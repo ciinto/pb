@@ -11,7 +11,6 @@ export interface PostInterface {
 }
 
 export class PostModel implements PostInterface {
-  collection
   
   constructor(public rawData: PostInterface) {
   }
