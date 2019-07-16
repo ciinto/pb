@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FirebaseDataTableComponent } from './firebase-data-table.component';
 import { MaterialModuleModule } from '../../material-module/material-module.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -9,7 +10,8 @@ import { MaterialModuleModule } from '../../material-module/material-module.modu
   declarations: [FirebaseDataTableComponent],
   imports: [
     CommonModule,
-    MaterialModuleModule
+    MaterialModuleModule,
+    RouterModule
   ],
   exports: [FirebaseDataTableComponent]
 })

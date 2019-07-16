@@ -16,6 +16,10 @@ const routes: Routes = [
       {
         path: 'create',
         component: CreatePostComponent
+      },
+      {
+        path: 'update/:id',
+        component: CreatePostComponent
       }
     ]
   }

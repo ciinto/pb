@@ -12,19 +12,18 @@ export class FirebaseDataTableComponent implements OnInit {
   @Input() detailLink: string
 
   list
+  columnToDisplay
 
   constructor() {
-    
+
   }
 
   ngOnInit() {
-    console.log(this.displayColumn);
     this.list = this.service.list()
-
   }
 
-  delete(element){
-    console.log(element)
+  delete(id) {
+    return this.service.delete(id).subscribe()
   }
 
 }

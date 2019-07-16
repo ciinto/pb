@@ -4,11 +4,11 @@ export interface ServiceInterface {
 
   list(): Observable<any>
 
-  read(): Observable<any>
+  read(id: string): Observable<any>
 
   create(obj: any): Observable<any>
 
-  update(obj: any): Observable<any>
+  update(id: string, obj: any): Observable<any>
 
-  delete(): Observable<any>
+  delete(id: string): Observable<any>
 }

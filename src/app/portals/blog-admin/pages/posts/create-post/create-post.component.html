@@ -1,5 +1,5 @@
 <div class="create-post">
-  <form class="create-post-form" [formGroup]="formGroup" (ngSubmit)="createPost(formGroup.value)">
+  <form class="create-post-form" [formGroup]="formGroup" (ngSubmit)="submitAct(formGroup.value)">
     <mat-form-field>
       <input matInput formControlName="title" placeholder="Title">
     </mat-form-field>
@@ -19,7 +19,7 @@
       </mat-select>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="!formGroup.valid">Create</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!formGroup.valid">{{actionBtn}}</button>
   </form>
 
   <markdown class="preview-post" lineNumbers  [data]="formGroup.value.content"></markdown>

@@ -1,4 +1,4 @@
-import { FirebaseService } from '../services/firebase.service';
+import * as moment from 'moment';
 
 export interface PostInterface {
   title?: string
@@ -6,17 +6,13 @@ export interface PostInterface {
   tag?: string[]
   content?: string
   author?: string
-  createdAt?: Date
-  updatedAt?: Date
+  createdAt?: string | number
+  updatedAt?: string | number
 }
 
 export class PostModel implements PostInterface {
-  
-  constructor(public rawData: PostInterface) {
-  }
 
-  get validate() {
-    return true
+  constructor(public rawData: PostInterface) {
   }
 
   get title() {
@@ -40,11 +36,19 @@ export class PostModel implements PostInterface {
   }
 
   get createdAt() {
-    return this.rawData.createdAt
+    if (!this.rawData.createdAt) {
+      return moment().unix();
+    }
+
+    return moment(this.rawData.createdAt).format('DD/MM/YYYY')
   }
 
   get updatedAt() {
-    return this.rawData.updatedAt
+    if (!this.rawData.updatedAt) {
+      return moment().unix();
+    }
+
+    return moment(this.rawData.updatedAt).format('DD/MM/YYYY')
   }
 
 }

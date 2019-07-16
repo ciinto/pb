@@ -10,12 +10,10 @@ import { Observable } from 'rxjs';
 })
 export class PostsComponent implements OnInit {
 
-  displayedColumns: string[] = ['title', 'tag', 'author'];
+  displayedColumns: string[] = ['title', 'tag', 'author', 'id'];
   posts: Observable<PostInterface[]>
 
   constructor(private postService: PostService) {
-    console.log(this.postService);
-    
     this.posts = this.postService.list()
    }
 
