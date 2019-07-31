@@ -1,4 +1,4 @@
 <div class="posts-wrapper">
   <button mat-raised-button class="create-post-btn" color="primary" routerLink="/admincp/posts/create">Create Post</button>
-  <app-firebase-data-table [service]="postService" [displayColumn]="displayedColumns"></app-firebase-data-table>
+  <app-firebase-data-table [model]="postModel" [service]="postService" [start]="startCreatedAt" [end]="endCreatedAt"></app-firebase-data-table>
 </div>

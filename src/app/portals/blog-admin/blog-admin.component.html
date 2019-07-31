@@ -2,8 +2,9 @@
   <mat-toolbar-row>
     <span>Admin Control Panel</span>
     <span class="admincp-spacer"></span>
-    <mat-icon class="admincp-icon" aria-hidden="false" aria-label="admincp heart icon">favorite</mat-icon>
-    <mat-icon class="admincp-icon" aria-hidden="false" aria-label="admincp delete icon">delete</mat-icon>
+    <button mat-icon-button aria-label="logout" (click)="logout()">
+      <mat-icon class="admincp-icon" aria-hidden="false" aria-label="logout">exit_to_app</mat-icon>
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
 

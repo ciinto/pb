@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 
 export interface ServiceInterface {
 
-  list(): Observable<any>
+  list(start?, end?): Observable<any>
 
   read(id: string): Observable<any>
 

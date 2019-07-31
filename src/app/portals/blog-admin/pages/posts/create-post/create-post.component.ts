@@ -3,7 +3,7 @@ import { PostInterface, PostModel } from 'src/app/core/models/post.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PostService } from 'src/app/core/services/post.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as moment from 'moment';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-create-post',
@@ -22,7 +22,11 @@ export class CreatePostComponent implements OnInit, OnDestroy {
     private postService: PostService,
     private route: ActivatedRoute,
     private router: Router,
+    private afAuth: AngularFireAuth
   ) {
+    this.afAuth.user.subscribe(user => {
+      console.log(user);
+    })
 
   }
 
@@ -53,9 +57,6 @@ export class CreatePostComponent implements OnInit, OnDestroy {
   }
 
   createPost(post: PostInterface) {
-    post.createdAt = moment().unix()
-    post.updatedAt = moment().unix()
-    
     this.postService.create(post).subscribe(res => {
       this.router.navigate(['/admincp/posts'])
     })

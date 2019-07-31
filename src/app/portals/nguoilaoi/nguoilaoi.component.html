@@ -1,0 +1,5 @@
+<p *ngIf="online">{{myInfo.name}}</p>
+
+<button *ngIf="online" (click)="disconnect()">disconnect</button>
+<button *ngIf="online" (click)="findFriend()">findFriend</button>
+<button *ngIf="!online" (click)="connect()">connect</button>

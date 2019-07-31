@@ -1,6 +1,7 @@
 import * as moment from 'moment';
 
 export interface PostInterface {
+  id?: string
   title?: string
   slug?: string
   tag?: string[]
@@ -8,11 +9,18 @@ export interface PostInterface {
   author?: string
   createdAt?: string | number
   updatedAt?: string | number
+  isDeleted?: boolean
 }
 
 export class PostModel implements PostInterface {
 
+  displayColumns: string[] = ['title', 'tag', 'author', 'updatedAt', 'createdAt', 'id'];
+
   constructor(public rawData: PostInterface) {
+  }
+
+  get id() {
+    return this.rawData.id
   }
 
   get title() {
@@ -40,7 +48,7 @@ export class PostModel implements PostInterface {
       return moment().unix();
     }
 
-    return moment(this.rawData.createdAt).format('DD/MM/YYYY')
+    return moment(+this.rawData.createdAt * 1000).format('DD/MM/YYYY')
   }
 
   get updatedAt() {
@@ -48,7 +56,11 @@ export class PostModel implements PostInterface {
       return moment().unix();
     }
 
-    return moment(this.rawData.updatedAt).format('DD/MM/YYYY')
+    return moment(+this.rawData.updatedAt * 1000).format('DD/MM/YYYY')
+  }
+
+  get isDeleted() {
+    return this.rawData.isDeleted
   }
 
 }

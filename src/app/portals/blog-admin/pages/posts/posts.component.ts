@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/core/services/post.service';
-import { PostInterface } from 'src/app/core/models/post.model';
+import { PostInterface, PostModel } from 'src/app/core/models/post.model';
 import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -10,12 +11,17 @@ import { Observable } from 'rxjs';
 })
 export class PostsComponent implements OnInit {
 
-  displayedColumns: string[] = ['title', 'tag', 'author', 'id'];
   posts: Observable<PostInterface[]>
+  postModel = PostModel
+  startCreatedAt
+  endCreatedAt
 
-  constructor(private postService: PostService) {
-    this.posts = this.postService.list()
-   }
+  constructor(private postService: PostService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(value => {
+      this.startCreatedAt = value.next
+      this.endCreatedAt = value.prev
+    })
+  }
 
   ngOnInit() {
   }
