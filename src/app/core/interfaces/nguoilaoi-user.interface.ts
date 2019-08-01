@@ -3,5 +3,6 @@ export interface NguoilaoiUserInterface {
   name: string
   loginAt: number
   connected: boolean
+  room?: string
   gender?: "male" | "female" | "undefined"
 }

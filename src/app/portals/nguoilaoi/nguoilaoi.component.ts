@@ -36,6 +36,10 @@ export class NguoilaoiComponent implements OnInit, OnDestroy {
     })
   }
 
+  leaveRoom() {
+    this.signalingSevice.leaveRoom()
+  }
+
   disconnect() {
     this.online && this.signalingSevice.offline().subscribe(ref => {
       console.log('disconnect')
